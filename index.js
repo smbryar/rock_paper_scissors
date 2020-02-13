@@ -1,0 +1,1 @@
+console.log('Welcome to a game of Rock, Paper, Scissors!');
