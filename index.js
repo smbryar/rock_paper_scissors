@@ -17,7 +17,6 @@ function validateUserResponse (response) {
         return undefined;} 
 }
 
-
 //Produce random computer responce
 function compRandomChoice()  {
     const random = Math.floor(Math.random()*3);
@@ -56,11 +55,18 @@ function playAgain(response) {
         return;
     }
     else {
+        console.log("You played "+numGames+" game(s). You won "+numWins+" of them, lost "+numLosses+" of them and drew "+numDraws+" of them.");
         readline.close();
     }
-}    
+}
+
+//Count wins, draws and losses
+let numWins = 0;
+let numLosses = 0;
+let numDraws = 0;
+let numGames = 0;
     
-//This function acts on the user response to initial question
+//Performs the functions of the game on the user's input
 function handleUserResponse (response) {
     // Validate user input
     const humanResponse = validateUserResponse (response);
@@ -88,15 +94,24 @@ function handleUserResponse (response) {
     const result = compareChoices(humanResponse,compChoice);
 
     if (result === true) {
-        readline.question('You win! Would you like to play again? Y/N?\n', playAgain);
+        numWins++;
+        numGames++;
+        console.log("You win! You have now won "+numWins+" out of "+numGames+" games.")
+        readline.question('Would you like to play again? Y/N?\n', playAgain);
         return;
         }
     else if (result === false) {
-        readline.question('The computer got you this time! Would you like to play again? Y/N?\n', playAgain);
+        numLosses++;
+        numGames++;
+        console.log("The computer got you this time! You have now won "+numWins+" out of "+numGames+" games.")
+        readline.question('Would you like to play again? Y/N?\n', playAgain);
         return;
     }
     else {
-        readline.question("It's a draw. How civilised. Would you like to play again? Y/N?\n", playAgain);
+        numDraws++;
+        numGames++;
+        console.log("It's a draw. How civilised. You have now won "+numWins+" out of "+numGames+" games.")
+        readline.question("Would you like to play again? Y/N?\n", playAgain);
         return;
     }
     
