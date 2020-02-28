@@ -47,6 +47,18 @@ function compareChoices(human,computer) {
     else {
         return false;}
     }
+
+//This function lets the user choose to play again
+function playAgain(response) {
+    const simpleResponse = response.toLowerCase().replace(/[.\!\s]/g,"");
+    if (simpleResponse === "y") {
+        readline.question("Let's play again. Which do you choose: rock, paper or scissors?\n", handleUserResponse);
+        return;
+    }
+    else {
+        readline.close();
+    }
+}    
     
 //This function acts on the user response to initial question
 function handleUserResponse (response) {
@@ -76,12 +88,16 @@ function handleUserResponse (response) {
     const result = compareChoices(humanResponse,compChoice);
 
     if (result === true) {
-        console.log('You win!');
+        readline.question('You win! Would you like to play again? Y/N?\n', playAgain);
+        return;
         }
     else if (result === false) {
-        console.group('The computer got you this time!');}
+        readline.question('The computer got you this time! Would you like to play again? Y/N?\n', playAgain);
+        return;
+    }
     else {
-        console.log("It's a draw. How civilised.");
+        readline.question("It's a draw. How civilised. Would you like to play again? Y/N?\n", playAgain);
+        return;
     }
     
     readline.close();
