@@ -8,6 +8,7 @@ const readline = require("readline").createInterface({
     output: process.stdout
 });
 
+// Validate user response
 function validateUserResponse (response) {
     const humanResponse = response.toLowerCase().replace(/[.\!\s]/g,"");
     if (humanResponse.match(/^(rock|paper|scissors)$/)) {
@@ -16,6 +17,8 @@ function validateUserResponse (response) {
         return undefined;} 
 }
 
+
+//Produce random computer responce
 function compRandomChoice()  {
     const random = Math.floor(Math.random()*3);
     switch (random) {
@@ -33,6 +36,7 @@ function compRandomChoice()  {
         }
     }
 
+//Compare user and computer choice
 function compareChoices(human,computer) {
     if (human === computer) {
         return undefined; }
@@ -44,20 +48,20 @@ function compareChoices(human,computer) {
         return false;}
     }
     
-
+//This function acts on the user response to initial question
 function handleUserResponse (response) {
     // Validate user input
     const humanResponse = validateUserResponse (response);
     
     if (humanResponse === undefined) {
-        console.log("I'm afraid that isn't one of the three options. The computer overlord wins by default.")
+        readline.question('Try again, maybe your spelling was off? Which do you choose: rock, paper or scissors?\n', handleUserResponse);
+        return;
     }
     else {
         console.log("You have chosen "+humanResponse+".");
     }
     
     // Random choice for computer
-
     const compChoice = compRandomChoice();
 
     if (compChoice === undefined) {
@@ -69,7 +73,6 @@ function handleUserResponse (response) {
     
 
     // Compare choices and report on who has won
-
     const result = compareChoices(humanResponse,compChoice);
 
     if (result === true) {
