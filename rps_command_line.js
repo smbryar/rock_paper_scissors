@@ -59,12 +59,6 @@ function playAgain(response) {
         readline.close();
     }
 }
-
-//Count wins, draws and losses
-let numWins = 0;
-let numLosses = 0;
-let numDraws = 0;
-let numGames = 0;
     
 //Performs the functions of the game on the user's input
 function handleUserResponse (response) {
@@ -114,9 +108,13 @@ function handleUserResponse (response) {
         readline.question("Would you like to play again? Y/N?\n", playAgain);
         return;
     }
-    
-    readline.close();
 }
+
+//Count wins, draws and losses
+let numWins = 0;
+let numLosses = 0;
+let numDraws = 0;
+let numGames = 0;
 
 // Obtain choice from user
 readline.question('Which do you choose: rock, paper or scissors?\n', handleUserResponse); 
