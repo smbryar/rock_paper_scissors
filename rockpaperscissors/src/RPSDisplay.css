@@ -1,0 +1,19 @@
+.button {
+    font-size: 3rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 4px;
+    background-color: #5ABFB5;
+    color: #1E403C;
+}
+
+.results {
+    font-size: 1.5rem;
+}
+
+.invite {
+    font-size: 2rem;
+}
+  
+
+  

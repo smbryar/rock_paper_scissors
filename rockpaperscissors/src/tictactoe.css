@@ -1,0 +1,53 @@
+  
+  ol, ul {
+    padding-left: 30px;
+  }
+  
+  .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+ 
+  
+  .square {
+    background: #5ABFB5;
+    border: 1px solid #1E403C;
+    float: left;
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 100px;
+    height: 100px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    color: #1E403C;
+  }
+  
+  .square:focus {
+    outline: none;
+  }
+  
+  .kbd-navigation .square:focus {
+    background: #ddd;
+  }
+  
+  .game {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .game-info {
+    margin-left: 20px;
+  }
+
+  .board-wrap {
+      width: 300px;
+      margin: 0 auto;
+  }
+
+  .status {
+    font-size: 50px;
+  }
